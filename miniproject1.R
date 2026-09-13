@@ -26,11 +26,14 @@ curve(0.2 * exp(-0.1 * x) - 0.2 * exp(-0.2 * x),
 
 # Estimating E(T)
 mean_T <- mean(T_draws)
-mean
+"Estimation of E(T)"
+mean_T
 
 # Estimate P(T > 15) and compare with analytical approach
 prob_T_MC <- mean(T_draws > 15)
+"Estimation of P(T > 15)"
 prob_T_MC
 
 prob_T_A <- 1 - (1 - exp(-0.1 * 15))^2
+"Computed P(T > 15)"
 prob_T_A
