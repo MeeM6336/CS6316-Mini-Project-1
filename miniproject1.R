@@ -37,3 +37,39 @@ prob_T_MC
 prob_T_A <- 1 - (1 - exp(-0.1 * 15))^2
 "Computed P(T > 15)"
 prob_T_A
+
+# Repeat 5 times with N = 10,000
+results_10000 <- replicate(5, {
+  T_draws <- replicate(10000, max(rexp(2, rate = 0.1)))
+
+  c(
+    mean_T = mean(T_draws),
+    prob_T_15 = mean(T_draws > 15)
+  )
+})
+
+t(results_10000)
+
+# N = 1,000
+results_1000 <- replicate(5, {
+  T_draws <- replicate(1000, max(rexp(2, rate = 0.1)))
+
+  c(
+    mean_T = mean(T_draws),
+    prob_T_15 = mean(T_draws > 15)
+  )
+})
+
+
+# N = 100,000
+results_100000 <- replicate(5, {
+  T_draws <- replicate(100000, max(rexp(2, rate = 0.1)))
+
+  c(
+    mean_T = mean(T_draws),
+    prob_T_15 = mean(T_draws > 15)
+  )
+})
+
+t(results_1000)
+t(results_100000)
